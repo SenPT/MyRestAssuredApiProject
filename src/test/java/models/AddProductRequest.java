@@ -1,6 +1,6 @@
 package models;
 
-public class AddProduct {
+public class AddProductRequest {
     public int id;
     public String title;
     public float price ;

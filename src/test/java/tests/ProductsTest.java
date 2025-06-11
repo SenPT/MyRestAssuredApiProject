@@ -6,7 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import models.AddProduct;
+import models.AddProductRequest;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class ProductsTest {
     @Test
     public void verifyAddNewProductReturn201AndContentTypeIsJsonFormat(){
-        AddProduct addProduct = new AddProduct();
+        AddProductRequest addProduct = new AddProductRequest();
         addProduct.setTitle("Laptop A");
         addProduct.setPrice(20);
         addProduct.setDescription("Laptop A 2020");
