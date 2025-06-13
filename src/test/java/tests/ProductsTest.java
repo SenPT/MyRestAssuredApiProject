@@ -6,7 +6,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import models.AddProductRequest;
+import models.AddProduct;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,7 +15,7 @@ import static io.restassured.RestAssured.given;
 public class ProductsTest {
     @Test
     public void verifyAddNewProductReturn201AndContentTypeIsJsonFormat(){
-        AddProductRequest addProduct = new AddProductRequest();
+        AddProduct addProduct = new AddProduct();
         addProduct.setTitle("Laptop A");
         addProduct.setPrice(20);
         addProduct.setDescription("Laptop A 2020");
@@ -46,4 +47,29 @@ public class ProductsTest {
         String responseString = response.asString();
         System.out.println("Response get product: "+responseString);
         }
+        @Test
+    public void verifyUpdateAProductSuccessfully(){
+        AddProduct product = new AddProduct();
+        product.setTitle("Laptop B");
+
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+                .addPathParam("id","24")
+                .setContentType(ContentType.JSON).build();
+
+        RequestSpecification requestSpecification = given().spec(req).body(product);
+        ResponseSpecification responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+
+         AddProduct addProduct= requestSpecification.when().put("/products/{id}").then().spec(responseSpecification).extract().response().as(AddProduct.class);
+         String updatedTitle = addProduct.getTitle();
+         Assert.assertEquals(updatedTitle,"Laptop B","Title doesn't update as expected");
+        }
+    @Test
+    public void verifyDeleteAProductSuccessfully(){
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+                .addPathParam("id","23").build();
+
+        RequestSpecification requestSpecification = given().spec(req);
+        ResponseSpecification responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+        requestSpecification.when().delete("/products/{id}").then().spec(responseSpecification).extract().response();
+    }
 }
