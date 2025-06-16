@@ -22,7 +22,7 @@ public class ProductsTest {
         addProduct.setCategory("Technology");
         addProduct.setImage("http://example.com");
 
-        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("http://localhost:3000")
                 .setContentType(ContentType.JSON).build();
 
         RequestSpecification res = given().spec(req).body(addProduct);
@@ -35,7 +35,7 @@ public class ProductsTest {
     }
     @Test
     public void verifyGetProductByIdReturnStatusCode200(){
-        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("http://localhost:3000")
                 .addPathParam("id","18")
                 .setContentType(ContentType.JSON).build();
 
@@ -52,7 +52,7 @@ public class ProductsTest {
         AddProduct product = new AddProduct();
         product.setTitle("Laptop B");
 
-        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("http://localhost:3000")
                 .addPathParam("id","24")
                 .setContentType(ContentType.JSON).build();
 
@@ -65,7 +65,7 @@ public class ProductsTest {
         }
     @Test
     public void verifyDeleteAProductSuccessfully(){
-        RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://6841b714d48516d1d35ca00d.mockapi.io")
+        RequestSpecification req = new RequestSpecBuilder().setBaseUri("http://localhost:3000")
                 .addPathParam("id","23").build();
 
         RequestSpecification requestSpecification = given().spec(req);

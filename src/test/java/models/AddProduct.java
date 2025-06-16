@@ -7,6 +7,7 @@ public class AddProduct {
     public String description;
     public String category;
     public String image;
+    public int stock;
 
     public int getId() {
         return id;
@@ -51,4 +52,11 @@ public class AddProduct {
         this.image = image;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 }
