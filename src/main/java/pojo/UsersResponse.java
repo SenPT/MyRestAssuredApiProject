@@ -1,4 +1,4 @@
-package models;
+package pojo;
 
 public class UsersResponse {
     public int id;

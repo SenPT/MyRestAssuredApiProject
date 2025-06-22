@@ -1,4 +1,4 @@
-package models;
+package pojo;
 
 public class CartItems {
     public int id;

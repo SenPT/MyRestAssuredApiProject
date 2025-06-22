@@ -1,4 +1,4 @@
-package models;
+package pojo;
 
 public class AddProduct {
     public int id;
