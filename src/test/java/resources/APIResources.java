@@ -1,2 +1,14 @@
-package resources;public class APIResources {
+package resources;
+
+public enum APIResources {
+    AddProductAPI("/products"),
+    GetProductAPI("/products/{id}"),
+    DeleteProductAPI("/products/{id}");
+    private String resource;
+    APIResources(String resource){
+        this.resource=resource;
+    }
+    public String getResource(){
+        return resource;
+    }
 }

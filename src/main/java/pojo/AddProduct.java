@@ -1,7 +1,10 @@
 package pojo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddProduct {
-    public int id;
+    public String id;
     public String title;
     public float price ;
     public String description;
@@ -9,7 +12,7 @@ public class AddProduct {
     public String image;
     public int stock;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
     public String getTitle() {
