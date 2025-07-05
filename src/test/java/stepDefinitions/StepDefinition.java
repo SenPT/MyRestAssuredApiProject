@@ -25,7 +25,7 @@ public class StepDefinition extends Utils {
     RequestSpecification res;
     Response response;
     TestDataBuild dataBuild = new TestDataBuild();
-    String productId;
+    public static String productId;
     JsonPath js;
     @Given("Add Product Payload")
     public void add_product_payload() throws IOException {
@@ -55,7 +55,7 @@ public class StepDefinition extends Utils {
 
     @And("verify productId created products to {string} using {string}")
     public void verifyProductIdCreatedProductsToUsing(String expectedName, String resource) throws IOException {
-        String productId = getJsonPath(response,"id");
+        productId = getJsonPath(response,"id");
         res = given().spec(requestSpecification()).pathParam("id",productId);
         users_call_with_post_http_request(resource,"GET");
         String actualName = getJsonPath(response,"title");
