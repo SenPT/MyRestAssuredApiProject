@@ -20,31 +20,38 @@ import java.io.IOException;
 import static io.restassured.RestAssured.given;
 
 public class StepDefinition extends Utils {
-    RequestSpecification req;
     ResponseSpecification resSpec;
     RequestSpecification res;
     Response response;
     TestDataBuild dataBuild = new TestDataBuild();
     public static String productId;
     JsonPath js;
-    @Given("Add Product Payload")
-    public void add_product_payload() throws IOException {
-        res = given().spec(requestSpecification()).body(dataBuild.addProductPayLoad());
+    @Given("Add Product Payload with {string} and {int} and {string}")
+    public void add_product_payload_with(String title, int price, String desc) throws IOException {
+        res = given().spec(requestSpecification()).body(dataBuild.addProductPayLoad(title,price,desc));
     }
     @When("users call {string} with {string} http request")
-    public void users_call_with_post_http_request(String resource, String method) {
+    public void users_call_with_post_http_request(String resource, String method) throws IOException {
         APIResources resourceAPI = APIResources.valueOf(resource);
        resSpec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-       if(method.equalsIgnoreCase("POST")){
-           response = res.when().post(resourceAPI.getResource());
-       } else if (method.equalsIgnoreCase("GET"))
-           response = res.when().get(resourceAPI.getResource());
-       else if (method.equalsIgnoreCase("DELETE"))
-           response = res.when().delete(resourceAPI.getResource());
+       switch (method.toUpperCase()){
+           case "POST":
+               response = res.when().post(resourceAPI.getResource());
+               break;
+           case "GET":
+               response = res.when().get(resourceAPI.getResource());
+               break;
+           case "DELETE":
+               res = given().spec(requestSpecification()).pathParam("id", productId);
+               response = res.when().delete(resourceAPI.getResource());
+               break;
+           default:
+               throw new IllegalArgumentException("Unsupported HTTP method: " + method);
+       }
     }
     @Then("the API call got success with status code {int}")
-    public void the_api_call_got_success_with_status_code(Integer statusCode) {
-        Assert.assertEquals(response.getStatusCode(),201);
+    public void the_api_call_got_success_with_status_code(int statusCode) {
+        Assert.assertEquals(response.getStatusCode(),statusCode);
     }
     @Then("{string} in response body is {string}")
     public void in_response_body_is(String keyValue, String expectedValue) {

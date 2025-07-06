@@ -2,11 +2,14 @@ package pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddProduct {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String id;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String title;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public float price ;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String description;
     public String category;
     public String image;
