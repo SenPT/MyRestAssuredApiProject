@@ -1,4 +1,4 @@
-package testRunners;
+package stepDefinitions;
 
 import io.cucumber.java.Before;
 import stepDefinitions.StepDefinition;
