@@ -26,9 +26,9 @@ public class StepDefinition extends Utils {
     TestDataBuild dataBuild = new TestDataBuild();
     public static String productId;
     JsonPath js;
-    @Given("Add Product Payload with {string} and {int} and {string}")
-    public void add_product_payload_with(String title, int price, String desc) throws IOException {
-        res = given().spec(requestSpecification()).body(dataBuild.addProductPayLoad(title,price,desc));
+    @Given("Add Product Payload with {string} and {double} and {string} and {string} and {int}")
+    public void add_product_payload_with_and_and_and_and(String title, Double price, String desc, String category, Integer stock) throws IOException {
+        res = given().spec(requestSpecification()).body(dataBuild.addProductPayLoad(title,price,desc,category,stock));
     }
     @When("users call {string} with {string} http request")
     public void users_call_with_post_http_request(String resource, String method) throws IOException {

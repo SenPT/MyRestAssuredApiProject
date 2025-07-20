@@ -1,19 +1,14 @@
 package pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddProduct {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String title;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public float price ;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public double price ;
     public String description;
     public String category;
-    public String image;
-    public int stock;
+    public Integer stock;
 
     public String getId() {
         return id;
@@ -22,7 +17,7 @@ public class AddProduct {
         return title;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -34,15 +29,11 @@ public class AddProduct {
         return category;
     }
 
-    public String getImage() {
-        return image;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -54,15 +45,11 @@ public class AddProduct {
         this.category = category;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 }

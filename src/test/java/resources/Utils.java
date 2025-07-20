@@ -26,7 +26,7 @@ public class Utils {
     }
     public String getGlobalValue(String key) throws IOException {
         Properties prop = new Properties();
-        FileInputStream fi = new FileInputStream("D:\\Project\\RestAssuredApi\\src\\test\\java\\config\\global.properties");
+        FileInputStream fi = new FileInputStream("D:/Project/RestAssuredApi/src/test/java/config/global.properties");
         prop.load(fi);
         return prop.getProperty(key);
     }
