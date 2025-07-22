@@ -17,6 +17,10 @@ public class AddProduct {
         return title;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public double getPrice() {
         return price;
     }

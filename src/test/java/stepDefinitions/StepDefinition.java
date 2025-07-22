@@ -10,7 +10,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.testng.Assert;
+import org.junit.Assert;
 import resources.APIResources;
 import resources.TestDataBuild;
 import resources.Utils;
@@ -18,7 +18,6 @@ import resources.Utils;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
-
 public class StepDefinition extends Utils {
     ResponseSpecification resSpec;
     RequestSpecification res;
