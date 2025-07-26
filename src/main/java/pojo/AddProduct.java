@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class AddProduct {
     public String id;
     public String title;
-    public double price ;
+    public Double price ;
     public String description;
     public String category;
     public Integer stock;

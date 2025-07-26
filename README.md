@@ -47,8 +47,8 @@ By default, the mock server will be accessible at `http://localhost:3000`
 ## 📁 Project Structure
 ## 📌 Planned Features
 The following APIs and HTTP methods are planned to be added:
-- `Product`: `PATCH` (update)
-- `User`: `POST, `GET`, `DELETE`, `PATCH`
+- `Product`: `POST`, `GET`, `DELETE`, `PATCH` (Done)
+- `User`: `POST`, `GET`, `DELETE`, `PATCH` (Update)
 - `CarItems`: `POST`, `GET`, `DELETE`, `PATCH`
 - `Orders`: `POST`, `GET`, `DELETE`, `PATCH`
 

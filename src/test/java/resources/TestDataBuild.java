@@ -5,7 +5,7 @@ import pojo.AddProduct;
 import java.util.Random;
 
 public class TestDataBuild {
-    public AddProduct addProductPayLoad(String title, double price, String desc, String category, int stock){
+    public AddProduct addProductPayLoad(String title, Double price, String desc, String category, Integer stock) {
         AddProduct addProduct = new AddProduct();
         addProduct.setId(generateId());
         addProduct.setTitle(title);
@@ -13,6 +13,15 @@ public class TestDataBuild {
         addProduct.setDescription(desc);
         addProduct.setCategory(category);
         addProduct.setStock(stock);
+        return addProduct;
+    }
+    public AddProduct updateProductPayLoad(String title, Double price, String desc, String category, Integer stock){
+        AddProduct addProduct = new AddProduct();
+        if (title != null) addProduct.setTitle(title);
+        if (price != null) addProduct.setPrice(price);
+        if (desc != null) addProduct.setDescription(desc);
+        if (category != null) addProduct.setCategory(category);
+        if (stock != null) addProduct.setStock(stock);
         return addProduct;
     }
     private String generateId() {
