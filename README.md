@@ -45,10 +45,22 @@ mvn test
 By default, the mock server will be accessible at `http://localhost:3000`
 
 ## 📁 Project Structure
+RestAssuredApi  
+├── src  
+│ ├── main  
+│ │ └── java  
+│   │ │  ├── pojo  
+│ └── test  
+│ ├── java  
+│ │ ├── features  
+│ │ ├── stepdefinitions  
+│ │ ├── testRunners  
+│ │ ├── resources  
+│ │ ├── config  
+├── pom.xml  
+└── README.md
 ## 📌 Planned Features
 The following APIs and HTTP methods are planned to be added:
 - `Product`: `POST`, `GET`, `DELETE`, `PATCH` (Done)
 - `User`: `POST`, `GET`, `DELETE`, `PATCH` (Update)
-- `CarItems`: `POST`, `GET`, `DELETE`, `PATCH`
-- `Orders`: `POST`, `GET`, `DELETE`, `PATCH`
 

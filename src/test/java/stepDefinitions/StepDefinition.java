@@ -34,62 +34,39 @@ public class StepDefinition extends Utils {
     }
     @Given("Update Product Payload with fields and values:")
     public void updateProductPayloadWithFieldsAndValues(DataTable dataTable) throws IOException {
-        List<Map<String,String>> data = dataTable.asMaps();
-        String title = "";
-        String price = "";
-        String desc = "";
-        String category ="";
-        String stock = "";
+        List<Map<String, String>> data = dataTable.asMaps();
+        String title = null;
+        String price = null;
+        String desc = null;
+        String category = null;
+        String stock = null;
+
         for (Map<String, String> row : data) {
             String field = row.get("fields");
             String value = row.get("values");
-            if (field != null && !field.isEmpty() && value != null && !value.isEmpty()) {
-                switch (field.trim().toLowerCase()) {
-                    case "title":
-                        title = value;
-                        break;
-                    case "price":
-                        price = value;
-                        break;
-                    case "desc":
-                        desc = value;
-                        break;
-                    case "category":
-                        category = value;
-                        break;
-                    case "stock":
-                        stock = value;
-                        break;
-                    default:
-                        break;
+
+            if (field == null || value == null) continue;
+
+            switch (field.trim().toLowerCase()) {
+                case "title" -> title = value;
+                case "price" -> price = value;
+                case "desc" -> desc = value;
+                case "category" -> category = value;
+                case "stock" -> stock = value;
+                default -> {
                 }
             }
         }
 
-        if (title.equals("")) {
-            title = null;
-        }
-        if (desc.equals("")) {
-            desc = null;
-        }
-        if (category.equals("")) {
-            category = null;
-        }
-        if (stock.equals("")) {
-            stock = null;
-        }
-        if (price.equals("")) {
-            price = null;
-        }
-         Double parsedPrice = null;
-        if (price != null){
+        Double parsedPrice = null;
+        if (price != null) {
             parsedPrice = Double.parseDouble(price);
         }
         Integer parsedStock = null;
-        if(stock != null){
-           parsedStock = Integer.parseInt(stock);
+        if (stock != null) {
+            parsedStock = Integer.parseInt(stock);
         }
-        res = given().spec(requestSpecification()).body(dataBuild.updateProductPayLoad(title,parsedPrice,desc,category,parsedStock));
+        res = given().spec(requestSpecification()).body(dataBuild.updateProductPayLoad(title, parsedPrice, desc, category, parsedStock));
     }
 
     @When("users call {string} with {string} http request")

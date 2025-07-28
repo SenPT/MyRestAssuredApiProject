@@ -1,6 +1,6 @@
 package pojo;
 
-public class UsersResponse {
+public class Users {
     public int id;
     public String username;
     public String email;
